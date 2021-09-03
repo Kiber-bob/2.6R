@@ -42,14 +42,6 @@ public class RadioTest {
         assertEquals(expected, actual);
     }
 
-    @Test
-    public void switchStationForwardTestTrue() {
-        Radio ma9k = new Radio();
-        ma9k.setStation(9);
-        int expected = 0;
-        int actual = ma9k.switchStationForward();
-        assertEquals(expected, actual);
-    }
 
     @Test
     public void switchStationForwardTestFalse() {
@@ -60,13 +52,6 @@ public class RadioTest {
         assertEquals(expected, actual);
     }
 
-    @Test
-    public  void switchMaxStationForwardTest() {
-        Radio ma9k = new Radio();
-        int expected = 0;
-        int actual = ma9k.switchStationForward();
-        assertEquals(expected, actual);
-    }
 
     @Test
     public void switchMinStationReversTest() {

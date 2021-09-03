@@ -14,7 +14,6 @@ public class Radio {
         return currentStation;
     }
 
-
     public int stationForward() {
         if (currentStation < maxStationNum) {
             currentStation = currentStation + 1;
@@ -27,14 +26,6 @@ public class Radio {
             currentStation = currentStation - 1;
         }
         return currentStation;
-    }
-
-
-    public int switchStationForward() {
-        if (currentStation == maxStationNum) {
-            currentStation = minStationNum;
-        }
-        return minStationNum;
     }
 
     public int switchStationReverse() {
@@ -77,7 +68,6 @@ public class Radio {
 
     public int levelVolMax() {
         if (currentLevelVol == maxLevelVol) {
-
         }
         return currentLevelVol;
     }
@@ -101,5 +91,6 @@ public class Radio {
 
 
 }
+
 
 
