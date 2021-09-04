@@ -1,193 +1,92 @@
-package ru.netology.domain;
+package ru.netology.domain;import org.junit.jupiter.api.Test;
 
-import org.junit.jupiter.api.Test;
-
+import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class RadioTest {
+class RadioTest {
 
     @Test
-    public void stationForwardTestTrue() {
-        Radio ma9k = new Radio();
-        ma9k.setStation(1);
-        int expected = 2;
-        int actual = ma9k.stationForward();
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void stationForwardTestFalse() {
-        Radio ma9k = new Radio();
-        ma9k.setStation(9);
-        int expected = 9;
-        int actual = ma9k.stationForward();
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void stationReversTestTrue() {
-        Radio ma9k = new Radio();
-        ma9k.setStation(1);
+    public void testSwitchingTheRadioStationToTheNext(){
+        Radio radio = new Radio();
+        radio.setCurrentRadioStation(8);
+        radio.switchingTheRadioStationToTheNext();
+        radio.switchingTheRadioStationToTheNext();
         int expected = 0;
-        int actual = ma9k.stationReverse();
-        assertEquals(expected, actual);
+        int actual = radio.getCurrentRadioStation();
+        assertEquals(expected,actual);
     }
 
     @Test
-    public void stationReversTestFalse() {
-        Radio ma9k = new Radio();
-        ma9k.setStation(0);
+    public void testSwitchingTheRadioStationToThePreviousOne(){
+        Radio radio = new Radio();
+        radio.setCurrentRadioStation(1);
+        radio.switchingTheRadioStationToThePreviousOne();
+        radio.switchingTheRadioStationToThePreviousOne();
+        int expected = 9;
+        int actual = radio.getCurrentRadioStation();
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void radioStationSelection(){
+        Radio radio = new Radio();
+        radio.setCurrentRadioStation(7);
+        radio.setCurrentRadioStation(11);
+        int expected = 7;
+        int actual = radio.getCurrentRadioStation();
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void radioStationSelection2() {
+        Radio radio = new Radio();
+        radio.setCurrentRadioStation(0);
+        radio.setCurrentRadioStation(-1);
         int expected = 0;
-        int actual = ma9k.stationReverse();
-        assertEquals(expected, actual);
-    }
-
-
-    @Test
-    public void switchStationForwardTestFalse() {
-        Radio ma9k = new Radio();
-        ma9k.setStation(9);
-        int expected = 9;
-        int actual = ma9k.stationForward();
-        assertEquals(expected, actual);
-    }
-
-
-    @Test
-    public void switchMinStationReversTest() {
-        Radio ma9k = new Radio();
-        int expected = 9;
-        int actual = ma9k.switchStationReverse();
+        int actual = radio.getCurrentRadioStation();
         assertEquals(expected, actual);
     }
 
     @Test
-    public void switchStationReversTestTrue() {
-        Radio ma9k = new Radio();
-        ma9k.setStation(0);
-        int expected = 9;
-        int actual = ma9k.switchStationReverse();
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void switchStationReversTestFalse() {
-        Radio ma9k = new Radio();
-        ma9k.setStation(9);
-        int expected = 8;
-        int actual = ma9k.stationReverse();
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void setStationTest() {
-        Radio ma9k = new Radio();
-        ma9k.setStation(10);
-        int expected = 1;
-        int actual = ma9k.getCurrentStation();
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void setStation1Test() {
-        Radio ma9k = new Radio();
-        ma9k.setStation(-1);
-        int expected = 1;
-        int actual = ma9k.getCurrentStation();
-        assertEquals(expected, actual);
-    }
-
-    // Громкость
-
-    @Test
-    public void setLevelVolHigherTestTrue() {
-        Radio ma9k = new Radio();
-        ma9k.setLevelVol(7);
-        int expected = 8;
-        int actual = ma9k.setLevelVolHigher();
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void setLevelVolHigherTestFalse() {
-        Radio ma9k = new Radio();
-        ma9k.setLevelVol(10);
+    public void increaseSoundVolume() {
+        Radio radio = new Radio();
+        radio.setCurrentSoundVolume(9);
+        radio.increaseSoundVolume();
+        radio.increaseSoundVolume();
         int expected = 10;
-        int actual = ma9k.setLevelVolHigher();
-        assertEquals(expected, actual);
+        int actual = radio.getCurrentSoundVolume();
+        assertEquals(expected,actual);
     }
 
     @Test
-    public void setLevelVolLowTestTrue() {
-        Radio ma9k = new Radio();
-        ma9k.setLevelVol(0);
+    public void decreaseSoundVolume(){
+        Radio radio = new Radio();
+        radio.setCurrentSoundVolume(1);
+        radio.decreaseSoundVolume();
+        radio.decreaseSoundVolume();
         int expected = 0;
-        int actual = ma9k.setLevelVolLow();
-        assertEquals(expected, actual);
+        int actual = radio.getCurrentSoundVolume();
+        assertEquals(expected,actual);
     }
 
     @Test
-    public void setLevelVolLOwTestFalse() {
-        Radio ma9k = new Radio();
-        ma9k.setLevelVol(0);
-        int expected = ma9k.setLevelVolLow();
-        int actual = ma9k.levelVolMin();
-        assertEquals(expected, actual);
+    public void soundVolumeSelection() {
+        Radio radio = new Radio();
+        radio.setCurrentSoundVolume(7);
+        radio.setCurrentSoundVolume(13);
+        int expected = 7;
+        int actual = radio.getCurrentSoundVolume();
+        assertEquals(expected,actual);
     }
 
     @Test
-    public void setLevelVolLowTest() {
-        Radio ma9k = new Radio();
+    public void soundVolumeSelection2() {
+        Radio radio = new Radio();
+        radio.setCurrentSoundVolume(4);
+        radio.setCurrentSoundVolume(-12);
         int expected = 4;
-        int actual = ma9k.setLevelVolLow();
-        assertEquals(expected, actual);
+        int actual = radio.getCurrentSoundVolume();
+        assertEquals(expected,actual);
     }
-
-    @Test
-    public void levelVolMaxTestT() {
-        Radio ma9k = new Radio();
-        ma9k.setLevelVol(10);
-        int expected = ma9k.setLevelVolHigher();
-        int actual = ma9k.levelVolMax();
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void levelVolMinTest() {
-        Radio ma9k = new Radio();
-        ma9k.setLevelVol(3);
-        int expected = ma9k.setLevelVolLow();
-        int actual = ma9k.levelVolMin();
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void LevelVolMaxTest() {
-        Radio ma9k = new Radio();
-        ma9k.setLevelVol(6);
-        int expected = ma9k.setLevelVolHigher();
-        int actual = ma9k.levelVolMax();
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void setAboveMaxLevelVolTest() {
-        Radio ma9k = new Radio();
-        ma9k.setLevelVol(15);
-        int expected = 5;
-        int actual = ma9k.getCurrentLevelVol();
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void setBelowMinLevelVoleTest() {
-        Radio ma9k = new Radio();
-        ma9k.setLevelVol(-2);
-        int expected = 5;
-        int actual = ma9k.getCurrentLevelVol();
-        assertEquals(expected, actual);
-    }
-
 
 }
-

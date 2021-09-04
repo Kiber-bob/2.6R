@@ -2,93 +2,103 @@ package ru.netology.domain;
 
 public class Radio {
 
-    private int currentStation = 1;
-    private int minStationNum = 0;
-    private int maxStationNum = 9;
-    private int currentLevelVol = 5;
-    private int minLevelVol = 0;
-    private int maxLevelVol = 10;
+    private int currentRadioStation;
+    private int maxRadioStation = 9;
+    private int minRadioStation = 0;
+    private int currentSoundVolume;
+    private int maxSoundVolume = 10;
+    private int minSoundVolume = 0;
 
-
-    public int getCurrentStation() {
-        return currentStation;
-    }
-
-    public int stationForward() {
-        if (currentStation < maxStationNum) {
-            currentStation = currentStation + 1;
-        }
-        return currentStation;
-    }
-
-    public int stationReverse() {
-        if (currentStation > minStationNum) {
-            currentStation = currentStation - 1;
-        }
-        return currentStation;
-    }
-
-    public int switchStationReverse() {
-        if (currentStation == minStationNum) {
-            this.currentStation = maxStationNum;
-        }
-        return maxStationNum;
-    }
-
-    public void setStation(int currentStation) {
-        if (currentStation > maxStationNum) {
+    public void switchingTheRadioStationToTheNext() {
+        if (currentRadioStation >= maxRadioStation) {
+            currentRadioStation = minRadioStation;
             return;
         }
-        if (currentStation < minStationNum) {
+        currentRadioStation++;
+
+    }
+    public void switchingTheRadioStationToThePreviousOne(){
+        if (currentRadioStation <= minRadioStation) {
+            currentRadioStation = maxRadioStation;
             return;
         }
-        this.currentStation = currentStation;
+        currentRadioStation--;
     }
 
-
-    // Громкость
-
-    public int getCurrentLevelVol() {
-        return currentLevelVol;
-    }
-
-    public int setLevelVolHigher() {
-        if (currentLevelVol < maxLevelVol) {
-            currentLevelVol = currentLevelVol + 1;
-        }
-        return currentLevelVol;
-    }
-
-    public int setLevelVolLow() {
-        if (currentLevelVol > minLevelVol) {
-            currentLevelVol = currentLevelVol - 1;
-        }
-        return currentLevelVol;
-    }
-
-    public int levelVolMax() {
-        if (currentLevelVol == maxLevelVol) {
-        }
-        return currentLevelVol;
-    }
-
-
-    public int levelVolMin() {
-        if (currentLevelVol == minLevelVol) {
-        }
-        return currentLevelVol;
-    }
-
-    public void setLevelVol(int currentLevelVol) {
-        if (currentLevelVol > maxLevelVol) {
+    public void increaseSoundVolume() {
+        if (currentSoundVolume == maxSoundVolume) {
             return;
         }
-        if (currentLevelVol < minLevelVol) {
-            return;
-        }
-        this.currentLevelVol = currentLevelVol;
+        currentSoundVolume++;
     }
 
+    public void decreaseSoundVolume() {
+        if (currentSoundVolume == minSoundVolume) {
+            return;
+        }
+        currentSoundVolume--;
+    }
+
+
+    public int getCurrentRadioStation() {
+        return currentRadioStation;
+    }
+
+    public void setCurrentRadioStation(int currentRadioStation) {
+        if (currentRadioStation > maxRadioStation){
+            return;
+        }
+        if (currentRadioStation < minRadioStation){
+            return;
+        }
+        this.currentRadioStation = currentRadioStation;
+    }
+
+    public int getMaxRadioStation() {
+        return maxRadioStation;
+    }
+
+    public void setMaxRadioStation(int maxRadioStation) {
+        this.maxRadioStation = maxRadioStation;
+    }
+
+    public int getMinRadioStation() {
+        return minRadioStation;
+    }
+
+    public void setMinRadioStation(int minRadioStation) {
+        this.minRadioStation = minRadioStation;
+    }
+
+    public int getCurrentSoundVolume() {
+        return currentSoundVolume;
+    }
+
+    public void setCurrentSoundVolume(int currentSoundVolume) {
+        if (currentSoundVolume > maxSoundVolume) {
+            return;
+        }
+        if (currentSoundVolume < minSoundVolume) {
+            return;
+        }
+        this.currentSoundVolume = currentSoundVolume;
+    }
+
+    public int getMaxSoundVolume() {
+        return maxSoundVolume;
+    }
+
+    public void setMaxSoundVolume(int maxSoundVolume) {
+        this.maxSoundVolume = maxSoundVolume;
+    }
+
+    public int getMinSoundVolume() {
+        return minSoundVolume;
+    }
+
+    public void setMinSoundVolume(int minSoundVolume) {
+        this.minSoundVolume = minSoundVolume;
+    }
 
 }
 
